@@ -1,3 +1,4 @@
+
 // declare all the necessary libraries
 const http = require('http');
 const path = require('path');
@@ -16,18 +17,11 @@ app.use(express.static(__dirname + '/public'));
 app.get("/", (req, res) => {
   res.send("youhou");
 })
-/// in case path is not found, return the 'Not Found' 404 code
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+
+app.use("/auth", require("./routes/auth/auth"));
 
 // launch the node server
 let server = app.listen(process.env.PORT || 3000, function () {
   console.log('Listening on port ' + server.address().port);
 });
 
-//import routes
-app.use('/auth/signup', authRouter); //where authRouter is imported
-router.post('/signup', action("/routes/auth"));
