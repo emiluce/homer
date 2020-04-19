@@ -18,7 +18,7 @@ const SignUp = () => {
 
   const { email, password, name, lastname } = form;
 
-  const [flash, setFalsh] = useSate(true);
+  const [flash, setFalsh] = useState(true);
 
   const handleSubmit = e => {
     e.precentDefault();
