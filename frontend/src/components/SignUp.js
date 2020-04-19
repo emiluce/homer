@@ -5,7 +5,7 @@ const SignUp = () => {
     email: "",
     password: "",
     name: "",
-    lastname: ""
+    lastname: "",
   });
 
 
@@ -18,11 +18,26 @@ const SignUp = () => {
 
   const { email, password, name, lastname } = form;
 
+  const [flash, setFalsh] = useSate(true);
 
   const handleSubmit = e => {
     e.precentDefault();
     console.log(form);
+    fetch("/auth/signup",
+      {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(this.state),
+      })
+      .then(res => res.json())
+      .then(
+        res => this.setState({ "flash": res.flash }),
+        err => this.setState({ "flash": err.flash })
+      )
   };
+
 
   return (
     <div>

@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const connection = require("../../helpers/db");
 
 
 app.get("/", (req, res) => {
@@ -8,9 +9,14 @@ app.get("/", (req, res) => {
 
 const router = express.Router();
 
-router.post('/signup', function (req, res, next) {
-  res.send('I am in POST signup');
+router.post("/", (req, res) => {
+  connection.query("INSERT INTO users SET ?", req.body, (error, result) => {
+    if (error) {
+      res.status(500).json({ flash: error.message });
+    } else {
+      res.status(200).json({ flash: "User has been signed up!" });
+    }
+  });
 });
-
 
 module.exports = router;
