@@ -19,4 +19,9 @@ router.post("/", (req, res) => {
   });
 });
 
+
+router.post('/signup', function (req, res, next) {
+  res.send('I am in POST signin');
+});
+
 module.exports = router;

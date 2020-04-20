@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import signup from "../styles/signup.scss";
+import TextField from "@material-ui/core/TextField";
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import { makeStyles } from '@material-ui/core/styles';
+import MuiAlert from '@material-ui/lab/Alert';
+import Snack from "./Snack"
+
+
+
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -39,18 +49,51 @@ const SignUp = () => {
   };
 
 
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  }));
+
+
+
+  const classes = useStyles();
+
+
+
+
+
+
   return (
-    <div>
-      <h1>{`${name}`}</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" onChange={onChange} placeholder="E-mail" value={email} />
-        <input type="password" name="password" onChange={onChange} placeholder="password" value={password} />
-        <input type="passwordconf" name="passwordconf" onChange={onChange} placeholder="Confirm password" value={password} />
-        <input type="name" name="name" onChange={onChange} placeholder="name" value={name} />
-        <input type="lastname" name="lastname" onChange={onChange} placeholder="lastname" value={lastname} />
-        <input type="submit" value="Submit" />
-      </form>
+    <div className="container">
+      <div className="box">
+        <img src="http://images.innoveduc.fr/react_odyssey_homer/wildhomer.png" alt="" />
+      </div>
+
+      <div>
+        <h1>{`${name}`}</h1>
+
+        <form className="form" noValidate autoComplete=" off" onSubmit={handleSubmit} >
+
+          <div className="input">
+            <TextField id="standard-basic" label="E-mail" type="email" name="email" onChange={onChange} placeholder="E-mail" value={email} />
+            <TextField id="standard-basic" label="Password" type="password" name="password" onChange={onChange} placeholder="password" value={password} />
+            <TextField id="standard-basic" label="Confirm password" type="passwordconf" name="passwordconf" onChange={onChange} placeholder="Confirm password" value={password} />
+            <TextField id="standard-basic" label="Name" type="name" name="name" onChange={onChange} placeholder="name" value={name} />
+            <TextField id="standard-basic" label="Lastname" type="lastname" name="lastname" onChange={onChange} placeholder="lastname" value={lastname} />
+          </div>
+
+
+          <Snack />
+        </form>
+      </div>
     </div>
   );
 };
+
+
 export default SignUp;
