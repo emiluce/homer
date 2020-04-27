@@ -37,7 +37,7 @@ export default function CustomizedSnackbars() {
 
   return (
     <div className={classes.root}>
-      <Button variant="outlined" onClick={handleClick}>
+      <Button variant="outlined" onClick={handleClick} Link to="/profile" href="/profile">
         Sign Up
       </Button>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

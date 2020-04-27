@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import signup from "../styles/signup.scss";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
+import Snack from "./Snack";
+import {
+  Link
+} from "react-router-dom";
 
-import Snack from "./Snack"
 
 
 
-
-const SignUp = () => {
+const SignIn = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
-    name: "",
-    lastname: "",
   });
 
 
@@ -24,14 +24,14 @@ const SignUp = () => {
     });
   };
 
-  const { email, password, name, lastname } = form;
+  const { email, password } = form;
 
   const [flash, setFalsh] = useState(true);
 
   const handleSubmit = e => {
     e.precentDefault();
     console.log(form);
-    fetch("/auth/signup",
+    fetch("/auth/signin",
       {
         method: 'POST',
         headers: new Headers({
@@ -67,33 +67,33 @@ const SignUp = () => {
 
 
   return (
+
+
+
     <div>
       <div>
         <nav>
           <ul>
             <li>
-              <a href="/signin">SignIn</a>
+              <a href="/signup">SignUp</a>
             </li>
           </ul>
         </nav>
       </div>
-      <div className="container">
 
+      <div className="container">
         <div className="box">
           <img src="http://images.innoveduc.fr/react_odyssey_homer/wildhomer.png" alt="" />
         </div>
 
         <div>
-          <h1>{`${name}`}</h1>
+          <h1>{`${email}`}</h1>
 
-          <form className="form" noValidate autoComplete=" off" onSubmit={handleSubmit} >
+          <form className="form" noValidate autoComplete="off" onSubmit={handleSubmit} >
 
             <div className="input">
               <TextField id="standard-basic" label="E-mail" type="email" name="email" onChange={onChange} placeholder="E-mail" value={email} />
               <TextField id="standard-basic" label="Password" type="password" name="password" onChange={onChange} placeholder="password" value={password} />
-              <TextField id="standard-basic" label="Confirm password" type="passwordconf" name="passwordconf" onChange={onChange} placeholder="Confirm password" value={password} />
-              <TextField id="standard-basic" label="Name" type="name" name="name" onChange={onChange} placeholder="name" value={name} />
-              <TextField id="standard-basic" label="Lastname" type="lastname" name="lastname" onChange={onChange} placeholder="lastname" value={lastname} />
             </div>
 
 
@@ -106,4 +106,4 @@ const SignUp = () => {
 };
 
 
-export default SignUp;
+export default SignIn;
