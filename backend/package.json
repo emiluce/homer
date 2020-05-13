@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Wild server",
+  "description": "homer",
   "main": "app.js",
   "proxy": "http://localhost:5000/",
   "scripts": {
@@ -10,9 +10,14 @@
   "author": "wilder",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.3"
+    "node": "^14.0.0",
+    "nodemon": "^2.0.3",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   }
 }

@@ -20,9 +20,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", require("./routes/auth/auth"));
 
-app.get("/auth/signup", (req, res) => {
-  res.send("I am in POST signup");
-});
+
 
 // launch the node server
 let server = app.listen(process.env.PORT || 5000, function () {
